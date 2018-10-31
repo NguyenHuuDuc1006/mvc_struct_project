@@ -3,6 +3,7 @@
 class Default_Models_Product {
 
     public $productID;
+    public $productCode;
     public $productName;
     public $supplierID;
     public $categoryID;
@@ -20,7 +21,7 @@ class Default_Models_Product {
     }
 
     public function getAllProduct() {
-        $query = "SELECT productID, productName, unitPrice, discount, image, description FROM products";
+        $query = "SELECT productID, productCode, productName, unitPrice, discount, image, description FROM products";
         $stmt = $this->con->prepare($query);
         $stmt->execute();
 
@@ -66,6 +67,18 @@ class Default_Models_Product {
         $rowCount = $stmt->rowCount();
         if ($rowCount > 0) {
             return $stmt;
+        } else {
+            return null;
+        }
+    }
+    public function getDetailProductByCode() {
+        $query = "SELECT * FROM products WHERE productCode = ? LIMIT 0,1";
+        $stmt = $this->con->prepare($query);
+        $stmt->bindParam(1, htmlspecialchars(strip_tags($this->productCode)));
+        $stmt->execute();
+        $row = $stmt->rowCount();
+        if ($row > 0) {
+            return $result = $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
             return null;
         }

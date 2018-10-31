@@ -19,13 +19,13 @@ class Default_Models_User {
 
         $rowCount = $stmt->rowCount();
         if ($rowCount > 0) {
-            return $stmt;
+            return true;
         } else {
             return null;
         }
     }
     public function  getAcount(){
-        
+        $query="SELECT * FROM customers";
     }
 
  

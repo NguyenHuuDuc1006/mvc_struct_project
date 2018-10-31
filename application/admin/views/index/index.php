@@ -14,7 +14,8 @@ session_start();
 //            ?>
             <h2 class="page-header">Danh sách sản phẩm</h2>
 
-            <a href="add" class="btn btn-info">Thêm mới sản phẩm</a>
+            <a href="<?php echo URL_BASE ?>admin/index/add" class="btn " style="background: #77b300;">Thêm mới sản phẩm</a>
+            <hr>
 
             <?php
 //            $action = isset($_GET['action']) ? $_GET['action'] : "";
@@ -43,8 +44,8 @@ session_start();
                         <td><?php echo $discount;?>%</td>
                         <td><?php echo $description; ?></td>
                         <td>
-                            <a href="index/detail?id=<?php echo $productID; ?>" class="btn btn-info">Xem</a> &nbsp;
-                            <a href="index/update?id=<?php echo $productID; ?>" class="btn btn-success">Sửa</a> &nbsp;
+                            <a href="<?php echo URL_BASE; ?>admin/index/detail?id=<?php echo $productID; ?>" class="btn btn-info">Xem</a> &nbsp;
+                            <a href="<?php echo URL_BASE; ?>admin/index/update?id=<?php echo $productID; ?>" class="btn btn-success">Sửa</a> &nbsp;
                             <a href="#" onclick="delete_product(<?php echo $productID; ?>);" class="btn btn-danger">Xóa</a> &nbsp;
                         </td>
                     </tr>

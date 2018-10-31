@@ -1,43 +1,38 @@
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
-  var $this = $(this),
-      label = $this.prev('label');
-
-	  if (e.type === 'keyup') {
-			if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-    	if( $this.val() === '' ) {
-    		label.removeClass('active highlight'); 
-			} else {
-		    label.removeClass('highlight');   
-			}   
-    } else if (e.type === 'focus') {
-      
-      if( $this.val() === '' ) {
-    		label.removeClass('highlight'); 
-			} 
-      else if( $this.val() !== '' ) {
-		    label.addClass('highlight');
-			}
+function validateForm_addProduct(){
+    var error=0;
+    var productName=document.getElementById("producName").value;
+    var unitPrice = document.getElementById("unitPrice").value;
+    var discount = document.getElementById("discount").value;
+    var category = document.getElementById("category").value;
+    var image = document.getElementById("image").value;
+    var description = document.getElementById("descripton").value;
+    
+    if(productName===""){
+        document.getElementById("productName-alert").innerHTML="Tên Sản phầm không được để trống!";
+        error=1;
     }
-
-});
-
-$('.tab a').on('click', function (e) {
-  
-  e.preventDefault();
-  
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-  
-  target = $(this).attr('href');
-
-  $('.tab-content > div').not(target).hide();
-  
-  $(target).fadeIn(600);
-  
-});
+    if(unitPrice===""){
+        document.getElementById("unitPrice-alert").innerHTML="Giá gốc Sản phầm không được để trống!";
+        error=1;
+    }
+    if(discount===""){
+        document.getElementById("discount-alert").innerHTML="Giảm giá không được để trống!";
+        error=1;
+    }
+    if(category===""){
+        document.getElementById("category-alert").innerHTML="Danh mục Sản phầm không được để trống!";
+        error=1;
+    }
+    if(image===""){
+        document.getElementById("image-alert").innerHTML="Ảnh Sản phầm không được để trống!";
+        error=1;
+    }
+    if(description===""){
+        document.getElementById("description-alert").innerHTML="Mô tả chi tiết không được để trống!";
+        error=1;
+    }
+    if(error===1){
+        return false;
+    }
+    
+}

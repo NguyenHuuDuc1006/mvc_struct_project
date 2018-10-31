@@ -72,53 +72,89 @@
 //        }
 //    }
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" onsubmit="return validateForm_addProduct();">
         <table class="table table-bordered table-hover table-responsive">
             <tr>
                 <th>Tên sản phẩm</th>
                 <td>
-                    <input type="text" name="txtName" class="form-control">
+                    <input type="text" name="txtName" class="form-control" id="productName"><br>
+                    <span id="productName-alert" class="alert" style="color:red;"></span>
                 </td>
             </tr>
             <tr>
                 <th>Giá gốc</th>
                 <td>
-                    <input type="text" name="txtPrice" class="form-control">
+                    <input type="text" name="txtPrice" class="form-control" id="unitPrice">
+                    <span id="unitPrice-alert" class="alert" style="color:red;"></span>
                 </td>
             </tr>
             <tr>
                 <th>Giảm giá</th>
                 <td>
-                    <input type="text" name="txtDiscount" class="form-control">
+                    <input type="text" name="txtDiscount" class="form-control" id="discount"><p id="idSub"></p>
+                    <span id="discount-alert" class="alert" style="color:red;"></span>
                 </td>
             </tr>
             <tr>
                 <th>Danh mục</th>
                 <td>
-                    <select name="cbCategory"class="form-control">
+                    <select name="cbCategory1" class="form-control" id="category" onchange="alert(document.getElementById($this).value);">
                         <?php
-//                        while ($row = $cats->fetch(PDO::FETCH_ASSOC)) {
-//                            
+                        while ($row = $this->catData1->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                            <option value="<?php echo $row['categoryID']; ?>" >
+                                <?php echo $row['categoryName']; ?>
+                            </option>
+                            <?php
+                        }
                         ?>
-<!--                            <option value="//<?php echo $row['categoryID'] ?>">
-                                //<?php echo $row['categoryName'] ?>
-                            </option>-->
-                        <?php
-//                        }
-                        ?>
+
                     </select>
+                    <span id="category-alert" class="alert" style="color:red;"></span>
+                </td>
+            <tr>
+            <tr id="loai">
+                <th>Loại sản phẩm</th>
+                <td>
+                    <select name="cbCategory2" class="form-control" id="category2">
+                    </select>
+                    <script>
+                            $(document).on('change', '#category', function(event) {
+                                categoryId = $(this).val();
+                                $.ajax({
+                                    type: 'POST',
+                                    dataType: 'html',
+                                    url: 'http://localhost/mvc_struct_project/admin/index/getCategoryBySubID',
+                                    data: {
+                                        categoryId: categoryId,
+                                    },
+                                    success: function(response) {
+                                        $('#category2').html(response);
+                                    },  
+                                    error: function(jqXHR, textStatus, errorThrown) {}
+                                });
+                            });
+                            
+//                        function getSubCategoryID() {
+//                            var subCategoryID = document.getElementById("category").value;
+//                            document.getElementById("idSub").innerHTML = subCategoryID;
+//                        }
+                    </script>
+                    <span id="category-alert" class="alert" style="color:red;"></span>
                 </td>
             <tr>
                 <th>Hình ảnh</th>
                 <td>
                     <input type="file" name="txtImage" class="form-control">
+                    <span id="image-alert" class="alert" style="color:red;"></span>                    
                 </td>
             </tr>
             <tr>
                 <th>Mô tả chi tiết</th>
                 <td>
-                    <textarea name="txtDesc"> </textarea>
+                    <textarea name="txtDesc" id="description"> </textarea>
                 </td>
+            <span id="description-alert" class="alert" style="color:red;"></span>
             </tr>
             <script>
                 CKEDITOR.replace('txtDesc');
@@ -127,7 +163,7 @@
                 <td></td>
                 <td>
                     <input type="submit" name="btnSave" value="Lưu" class="btn btn-success"> &nbsp;
-                    <a href="index" class="btn btn-danger" > Quay về trang chủ</a>
+                    <a href="<?php echo URL_BASE ?>admin/index" class="btn btn-danger" > Quay về trang chủ</a>
                 </td>
             </tr>
 

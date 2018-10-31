@@ -236,10 +236,10 @@ nav{
 }
 
 #menu-right{
-    border: 1px solid gainsboro;
+    padding: 10px;
     position: relative;
-    right: -15px;
-    padding: 0px;
+    right: 0px;
+    left: 0px;
     border-top: 2px solid #e4101c
 }
 .menu-right-header{
@@ -747,10 +747,20 @@ input, button, textarea, select, optgroup, option {
 }
 .muangay{
     width: 60%;
-    background: #ED1C24;
+    background: #ff3333;
     text-align: center;
-    color: #ffffff;
     margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
+}
+.muangay:hover{
+    background:#ff8080;
+}
+.muangay a{
+    color:white;
+    text-align: center;
+    font-weight: bold;
+}
+.muangay a:hover{
+    color:white;
 }

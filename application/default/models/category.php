@@ -29,10 +29,27 @@ class Default_Models_Category {
             return null;
         }
     }
+    //Lấy tất cả danh mục theo subcategoryID
+    public function getCategoryBySubID() {
+        $query = "SELECT * FROM categories WHERE subCategoryID = ?";
+        $stmt = $this->con->prepare($query);
+        //lam sach du lieu
+        $this->subCategoryID = htmlspecialchars(strip_tags($this->subCategoryID));
+        $stmt->bindParam(1, $this->subCategoryID);
+        $stmt->execute();
+        // khi execute ra 1 object nen can chuyen vao mang
+        $row = $stmt->rowCount();
+        if($row>0){
+            return $stmt;
+        }
+        else{
+            return null;
+        }
+    }
 
     public function getParentNoSubCategory() {
         $query = "SELECT categoryID, categoryName FROM categories WHERE subCategoryID='' AND categoryID!=(SELECT DISTINCT subCategoryID FROM categories WHERE subCategoryID!='')";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->con->prepare($query);
         $stmt->execute();
         $rowCount = $stmt->rowCount();
         if ($rowCount > 0) {

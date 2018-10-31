@@ -1,7 +1,7 @@
 <div class="container-fluit">
     <div class="header">
         <div class="row">
-            <div class="col-sm-3 logo"><a href="<?php echo URL_BASE?>admin/index" class="adminHeader">D3TAdmin</a></div>
+            <div class="col-sm-3 logo"><a href="<?php echo URL_BASE?>admin" class="adminHeader">D3TAdmin</a></div>
             <div class="col-sm-5">
                 <form>
                     <div class="row search">

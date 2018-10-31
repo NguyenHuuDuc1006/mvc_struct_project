@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-sm-3 menu">
                     <ul>
-                        <li><a href="admin/index">Quản lý sản phẩm</a></li>
+                        <li><a href="<?php echo URL_BASE; ?>admin">Quản lý sản phẩm</a></li>
                         <li><a href="#">Quản lý danh mục sản phẩm</a></li>
                         <li><a href="#">Quản lý đơn hàng</a></li>
                         <li><a href="#">Quản lý người dùng</a></li>

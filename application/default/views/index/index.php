@@ -146,6 +146,32 @@
 <div class="container-fluid" id="product-list">
     <div class="container">
         <div class="row">
+            <div class="col-sm-3" id="right">
+                <div class="container-fluid" id="menu-right">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="menu-right-header">
+                                <i class="glyphicon glyphicon-list-alt" style="padding-right: 2%;"></i>
+                                Bộ lọc sản phẩm 
+                            </div><br>
+                            <p style="color: #1B6D85;">Lọc theo giá sản phẩm:</p>
+                            <select name="" id="" onchange="showProduct(this.value);" class="form-control">
+                                <option value="">--- Chọn khoảng giá --- </option>
+                                <option value="">Dưới 3 triệu</option>
+                                <option value="">3 -> 5 triệu</option>
+                                <option value="">trên 5 triệu</option>
+                            </select><br>
+                            <p style="color: #1B6D85;">Lọc theo Kích thước màn hình:</p>
+                            <select name="" id="" onchange="showProduct(this.value);" class="form-control">
+                                <option value="">--- Chọn kích thước màn hình --- </option>
+                                <option value="">Dưới 4 inch</option>
+                                <option value="">từ 4->5 inch</option>
+                                <option value="">trên 5 inch</option>
+                            </select><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-9" id="product">
                 <div class="container-fluid">
                     <div class="row">
@@ -156,12 +182,12 @@
                             <div class="col-sm-3 item-product">
                                 <div class="grid" class="item-img">
                                     <figure class="effect-zoe">
-                                        <a href="<?php echo URL_BASE . 'index/detail?id=' . $productID; ?>">
+                                        <a href="<?php echo URL_BASE . 'detail?id=' . $productID; ?>">
                                             <img src="<?php echo URL_BASE; ?>templates/default/image/<?php echo $image; ?>" alt="image"/>
                                         </a>
                                         <figcaption>
                                             <p>
-                                                <span><a href="<?php echo URL_BASE . 'index/detail?id=' . $productID ?>">Thông tin chi tiết</a></span>
+                                                <span><a href="#" onclick="livesale(<?php echo $productID; ?>)">Thêm vào giỏ hàng <br><i class="fa fa-cart-arrow-down" style="font-size: 24px;"></i></a></span>
                                             </p>
                                         </figcaption>
                                     </figure>
@@ -172,7 +198,7 @@
                                 <div class="item-price">
                                     <span class="new-price"><?php echo ($unitPrice * (100 - $discount) / 100) . " đ" ?></span>
                                     <span class="old-price"><?php echo $unitPrice . " đ"; ?></span>
-                                    <div  class="muangay btn">Mua ngay</div>
+                                    <div  class="muangay btn"><a href="<?php echo URL_BASE; ?>cart">Mua ngay</a></div>
                                 </div>
 
 
@@ -185,51 +211,7 @@
                 </div>
 
             </div>
-            <div class="col-sm-3" id="right">
-                <div class="container-fluid" id="menu-right">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="menu-right-header">
-                                <i class="fa fa-tags" style="padding-right: 2%;"></i>
-                                Sản phẩm bán chạy nhất
-                            </div>
-                            <div class="menu-right-content">
-                                <a href="#">
-                                    <div class="product-seller">
-                                        <div class="img-seller">
-                                            <img src="<?php echo URL_BASE; ?>templates/default/image/iphone-8-plus_1.jpg" alt=""/>
-                                        </div>
-                                        <div class="name-seller">
-                                            iphone-8-plus
-                                        </div>
-                                        <div class="price-seller">
-                                            <span class="new">20.000.000 đ</span>
-                                            <span class="old">25.000.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
 
-                                <a href="#">
-                                    <div class="product-seller">
-                                        <div class="img-seller">
-                                            <img src="<?php echo URL_BASE; ?>templates/default/image/iphone-7-plus_1.jpg" alt=""/>
-                                        </div>
-                                        <div class="name-seller">
-                                            iphone-7-plus
-                                        </div>
-                                        <div class="price-seller">
-                                            <span class="new">12.000.000 đ</span>
-                                            <span class="old">15.000.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

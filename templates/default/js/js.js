@@ -145,7 +145,6 @@ function validateForm_register() {
         return false;
     }
 }
-
 function showCate() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {

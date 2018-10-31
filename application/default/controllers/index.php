@@ -15,9 +15,9 @@ class Default_Controllers_Index extends Libs_Controller {
         $product = new Default_Models_Product($db);
         $this->view->proData = $product->getAllProduct();
         $this->view->newData = $product->getNewProduct();
-        
+
         $advertise = new Default_Models_Advertise($db);
-        
+
         $this->view->slide = $advertise->getAllSlide();
 
 
@@ -30,9 +30,26 @@ class Default_Controllers_Index extends Libs_Controller {
         $product = new Default_Models_Product($db);
         $product->productID = isset($_GET['id']) ? $_GET['id'] : "";
         $this->view->detailProduct = $product->getDetailProductByID();
-        
-         $this->view->newData = $product->getNewProduct();
+
+        $this->view->newData = $product->getNewProduct();
         $this->view->render('index/detail');
+    }
+
+    public function category() {
+        $this->view->render('index/category');
+    }
+
+    public function getPageCategory() {
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
+        if($id!=""){
+        $database = new Libs_Model;
+        $db = $database->getConnection();
+        $product = new Default_Models_Product($db);
+        $product->categoryID = $id;
+        $this->view->categoryGroup = $product->getAllProductByCategoryID();
+
+        $this->view->render('index/categoryPage');
+        }
     }
 
 }

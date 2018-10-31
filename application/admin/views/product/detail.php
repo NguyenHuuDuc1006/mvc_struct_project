@@ -53,7 +53,7 @@
         </tr>
         <tr>
             <td></td>                
-            <td><a href="../index" class="btn btn-info">Quay về trang danh sách</a></td>
+            <td><a href="<?php echo URL_BASE; ?>admin" class="btn btn-info">Quay về trang danh sách</a></td>
         </tr>
 
     </table>

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <div class="container-fluid w3-yellow" id="topheader">
     <div class="container">
         <div class="row ">
@@ -54,7 +51,7 @@ session_start();
                 <a href="<?php echo URL_BASE ?>cart/index">
                     <button type="button" class="btn btn-default">
                         <i class="fa fa-cart-arrow-down" style="font-size: 24px;"></i>
-                        <span class="badge">0</span>
+                        <span class="badge" id="messageCart">0</span>
                     </button>
                 </a>
             </div>                    
@@ -100,12 +97,14 @@ session_start();
                                     $category1 = new Default_Models_Category($db);
                                     $subCategoryId = $rowCat['categoryID'];
 
-                                    $catObj1 = $category1->getSubCategoryIdByParent($subCategoryId);
+                                    $catObj1 = $category1->getSubCategoryIdByParent($subCategoryId);                                   
+                                              
+                                    
 
                                     while ($rowCat1 = $catObj1->fetch(PDO::FETCH_ASSOC)) {
                                         ?>
                                         <li>
-                                            <a href="danhmucIP.php"><?php echo $rowCat1['categoryName'] ?></a>
+                                            <a href="<?php echo URL_BASE;?>getPageCategory/?id=<?php echo $rowCat1['categoryID'];  ?>"><?php echo $rowCat1['categoryName'] ?></a>
                                         </li>
                                         <?php
                                     }
