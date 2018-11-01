@@ -29,7 +29,12 @@ class Default_Controllers_Index extends Libs_Controller {
         $db = $database->getConnection();
         $product = new Default_Models_Product($db);
         $product->productID = isset($_GET['id']) ? $_GET['id'] : "";
-        $this->view->detailProduct = $product->getDetailProductByID();
+        $objProduct = $product->getDetailProductByID();
+        $this->view->detailProduct = $objProduct;
+        
+        $category = new Default_Models_Category($db);
+        $category->categoryID = $objProduct["categoryID"];
+        $this->view->objCategory= $category->getCategoryByID();
 
         $this->view->newData = $product->getNewProduct();
         $this->view->render('index/detail');

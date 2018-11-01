@@ -4,16 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/controllers/index.php</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/models/category.php</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/templates/default/css/layout.css</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/templates/default/header.php</file>
+            <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/views/index/detail.php</file>
             <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/models/product.php</file>
             <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/views/cart/index.php</file>
             <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/views/index/index.php</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/application/admin/views/product/add.php</file>
             <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/controllers/cart.php</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/application/default/views/index/categoryPage.php</file>
-            <file>file:/C:/xampp/htdocs/mvc_struct_project/templates/admin/css/layout.css</file>
         </group>
     </open-files>
 </project-private>

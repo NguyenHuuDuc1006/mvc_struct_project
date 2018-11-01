@@ -13,7 +13,8 @@ class Default_Controllers_Cart extends Libs_Controller {
         $product = new Default_Models_Product($db);
         $product->productID = isset($_GET['id']) ? $_GET['id'] : "";
         $this->view->ProductCart = $product->getDetailProductByID();
-
+                //lấy sản phẩm mới nhất 
+        $this->view->newData = $product->getNewProduct();
         $this->view->render('cart/index');
     }
         public function addtocart() {
@@ -28,12 +29,13 @@ class Default_Controllers_Cart extends Libs_Controller {
         $Cart[] = $productCart;
 
         if ($id != "") {
-
             $itemArray = array($Cart[0]["productCode"] => array(
+                    'id' => $Cart[0]["productID"],
                     'productCode' => $Cart[0]["productCode"],
+                    'image' => $Cart[0]["image"],
                     'name' => $Cart[0]["productName"],
                     'price' => ($Cart[0]["unitPrice"] * (100 - $Cart[0]["discount"]) / 100),
-                    'quantity' => 1
+                    'quantity' => 1                    
             ));
             if (!empty($_SESSION["cart_item"])) {
                 if (in_array($Cart[0]["productCode"], array_keys($_SESSION["cart_item"]))) {

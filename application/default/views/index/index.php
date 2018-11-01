@@ -196,9 +196,9 @@
                                     <a href="<?php echo URL_BASE . 'index/detail?id=' . $productID ?>"><?php echo $productName; ?></a>
                                 </div>
                                 <div class="item-price">
-                                    <span class="new-price"><?php echo ($unitPrice * (100 - $discount) / 100) . " đ" ?></span>
-                                    <span class="old-price"><?php echo $unitPrice . " đ"; ?></span>
-                                    <div  class="muangay btn"><a href="<?php echo URL_BASE; ?>cart">Mua ngay</a></div>
+                                    <span class="new-price"><?php echo number_format($unitPrice * (100 - $discount) / 100) . " đ"; ?></span>
+                                    <span class="old-price"><?php echo number_format($unitPrice) . " đ"; ?></span>
+                                    <div  class="muangay btn"><a href="<?php echo URL_BASE; ?>cart" onclick="livesale(<?php echo $productID; ?>)">Mua ngay</a></div>
                                 </div>
 
 

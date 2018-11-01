@@ -18,9 +18,9 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Iphone-6s-plus</li>
-            <li class="breadcrumb-item"><a href="#">Iphone(Apple)</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo URL_BASE; ?>">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?php echo $this->detailProduct['productName']; ?></li>
+            <li class="breadcrumb-item"><a href="<?php echo URL_BASE ; ?>getPageCategory?id=<?php echo $this->detailProduct['categoryID'];?>"><?php echo $this->objCategory['categoryName']; ?></a></li>
 
         </ol>
     </nav>
@@ -103,7 +103,7 @@
                     </span>
                 </div>
                 <div class="product_base">
-                    <div class="price_current"  ><?php echo $this->detailProduct['unitPrice']; ?>₫</div>
+                    <div class="price_current"><?php echo number_format(($this->detailProduct['unitPrice'])*(100-$this->detailProduct['discount'])/100); ?>₫</div>
                 </div>
                 <div class="_color">
                     <label style="display: inline;">Chọn màu: </label>
@@ -163,8 +163,8 @@
                             <button class="btn_2vuC"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" color="#E5101D" class="icon_3fDg"><g fill="none" fill-rule="evenodd"><path d="M2 3h16v16.707H2z"></path><path fill="#E5101D" d="M4 14.879v-9.88h12v8H6.5a1.5 1.5 0 0 0-1.061.44L4 14.88zm12.5-11.88h-13A1.503 1.503 0 0 0 2 4.5v15.208L6.707 15H16.5a1.503 1.503 0 0 0 1.5-1.5v-9A1.503 1.503 0 0 0 16.5 3z"></path><path fill="#E5101D" d="M6.5 10.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2M9.5 10.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2M12.5 10.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2M20.5 6.5h-1v10h-11v1c0 .55.45 1 1 1h8l4 3v-14c0-.55-.45-1-1-1"></path></g></svg>
                                 <span>Chat ngay</span></button>
                         </div>
-                        <button class="btn_2Hnx addtocart_2srL">Thêm vào giỏ hàng</button>
-                        <button class="btn_2Hnx buynow_2lc7">Mua ngay</button>
+                        <button class="btn_2Hnx addtocart_2srL"><a style="color:white;" href="#" onclick="livesale(<?php echo $this->detailProduct['productID']; ?>)">Thêm vào giỏ hàng</a></button>
+                        <button class="btn_2Hnx buynow_2lc7"><a style="color:white;" href="<?php echo URL_BASE; ?>cart" onclick="livesale(<?php echo $this->detailProduct['productID']; ?>)">Mua ngay</a></button>
                     </div>
                 </div>
                 <br>
