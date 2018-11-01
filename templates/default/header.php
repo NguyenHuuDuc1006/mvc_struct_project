@@ -7,10 +7,23 @@
                 <a href="<?php echo URL_BASE . 'care/index' ?>">
                     <span class="fa fa-question-circle"></span>Trợ giúp</a>
             </div>
-            <div class="col-sm-6 list-right">
-                <a href="<?php echo URL_BASE . 'user/register' ?>">Đăng ký|</a>
-                <a href="<?php echo URL_BASE . 'user/login' ?>">Đăng nhập</a>
-            </div>
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                ?>
+                <div class="col-sm-6 list-right">
+                    <a href="#">Xin chào : <?php echo $_SESSION['email']."| "; ?></a>                
+                    <a href="<?php echo URL_BASE . 'user/logoutProcess' ?>">Đăng xuất</a>
+                </div>
+                <?php
+            } else {
+                ?>
+                <div class="col-sm-6 list-right">
+                    <a href="<?php echo URL_BASE . 'user/register' ?>">Đăng ký|</a>
+                    <a href="<?php echo URL_BASE . 'user/login' ?>">Đăng nhập</a>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -97,14 +110,14 @@
                                     $category1 = new Default_Models_Category($db);
                                     $subCategoryId = $rowCat['categoryID'];
 
-                                    $catObj1 = $category1->getSubCategoryIdByParent($subCategoryId);                                   
-                                              
-                                    
+                                    $catObj1 = $category1->getSubCategoryIdByParent($subCategoryId);
+
+
 
                                     while ($rowCat1 = $catObj1->fetch(PDO::FETCH_ASSOC)) {
                                         ?>
                                         <li>
-                                            <a href="<?php echo URL_BASE;?>getPageCategory/?id=<?php echo $rowCat1['categoryID'];  ?>"><?php echo $rowCat1['categoryName'] ?></a>
+                                            <a href="<?php echo URL_BASE; ?>getPageCategory/?id=<?php echo $rowCat1['categoryID']; ?>"><?php echo $rowCat1['categoryName'] ?></a>
                                         </li>
                                         <?php
                                     }

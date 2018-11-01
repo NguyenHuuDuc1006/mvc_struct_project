@@ -31,10 +31,10 @@ class Default_Controllers_Index extends Libs_Controller {
         $product->productID = isset($_GET['id']) ? $_GET['id'] : "";
         $objProduct = $product->getDetailProductByID();
         $this->view->detailProduct = $objProduct;
-        
+
         $category = new Default_Models_Category($db);
         $category->categoryID = $objProduct["categoryID"];
-        $this->view->objCategory= $category->getCategoryByID();
+        $this->view->objCategory = $category->getCategoryByID();
 
         $this->view->newData = $product->getNewProduct();
         $this->view->render('index/detail');
@@ -46,18 +46,21 @@ class Default_Controllers_Index extends Libs_Controller {
 
     public function getPageCategory() {
         $id = isset($_GET['id']) ? $_GET['id'] : "";
-        if($id!=""){
-        $database = new Libs_Model;
-        $db = $database->getConnection();
-        $product = new Default_Models_Product($db);
-        $product->categoryID = $id;
-        $this->view->categoryGroup = $product->getAllProductByCategoryID();
-
-        $this->view->render('index/categoryPage');
+        if ($id != "") {
+            $database = new Libs_Model;
+            $db = $database->getConnection();
+            $product = new Default_Models_Product($db);
+            $product->categoryID = $id;
+            if ($product->getAllProductByCategoryID() != NULL) {
+                $this->view->categoryGroup = $product->getAllProductByCategoryID();
+                $this->view->render('index/categoryPage');
+            } else {
+                $this->view->render('index/message');
+            }
         }
     }
 
 }
-// abc
 
+// abc
 ?>

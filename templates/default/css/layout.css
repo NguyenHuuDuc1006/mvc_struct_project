@@ -764,3 +764,19 @@ input, button, textarea, select, optgroup, option {
 .muangay a:hover{
     color:white;
 }
+.login_center{
+    display: inline;
+}
+.login_div{
+    padding : 30px;
+    border-radius: 20px;
+    background-color: hsl(210, 100%, 95%);
+    border: 1px solid hsl(210, 100%, 80%);
+}
+.text_center{
+    /*text-align: center*/
+}
+.login_div span{
+    color: red; 
+    float: right
+}
